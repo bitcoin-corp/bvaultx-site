@@ -11,14 +11,14 @@
 <meta property="og:site_name" content="bVaultX">
 <meta property="og:title" content="bVaultX · The vault that pays for itself">
 <meta property="og:description" content="Lock BSV once and it pays for your storage, month by month. Prepaid, time-locked, yours.">
-<meta property="og:image" content="https://bvaultx.com/og-bvaultx-v1.png">
+<meta property="og:image" content="https://bvaultx.com/og-bvaultx-v2.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="bVaultX: the vault that pays for itself. A twelve-month storage plan, paid one month at a time from a BSV lock.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="bVaultX · The vault that pays for itself">
 <meta name="twitter:description" content="Lock BSV once and it pays for your storage, month by month. Prepaid, time-locked, yours.">
-<meta name="twitter:image" content="https://bvaultx.com/og-bvaultx-v1.png">
+<meta name="twitter:image" content="https://bvaultx.com/og-bvaultx-v2.png">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -158,6 +158,49 @@ footer{border-top:1px solid #121317;padding:40px 0 56px;color:var(--dim);font-si
 .unlock{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-top:1px solid var(--edge);background:rgba(245,184,0,.05);font:600 15px/1.2 var(--hf)}
 .hero .story{max-width:460px;width:100%;justify-self:center}
 .unlock span:last-child{color:var(--gold-hi);white-space:nowrap}
+/* hero animation: one CSS sequence (arrive, staged reveal, pop), base styles = final state */
+html,body{overflow-x:clip}.hero{overflow-x:clip}
+.stage{position:relative;justify-self:center;width:100%;max-width:420px}
+.stage::before{content:"";position:absolute;inset:-8% -10%;z-index:-1;background:radial-gradient(closest-side at 40% 35%,rgba(245,184,0,.2),transparent 70%)}
+.stage.wait,.stage.wait *{animation-play-state:paused!important}
+.dev{position:relative;background:#08080a;border:1px solid var(--edge);border-radius:30px;padding:22px 20px 20px;box-shadow:0 40px 90px -40px rgba(245,184,0,.45);animation:arrive 1s var(--ease) both}
+.sh{display:flex;justify-content:space-between;align-items:center;gap:12px;font:600 14px/1.2 var(--hf);color:var(--muted)}
+.chips{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{padding:7px 12px;border-radius:999px;background:rgba(245,184,0,.12);color:var(--gold-hi);font:600 12px/1 var(--hf);white-space:nowrap;animation:pop .45s var(--ease) 2.4s both}
+.chip+.chip{animation-delay:2.55s}
+@keyframes arrive{from{opacity:0;transform:translateY(18px) scale(.97)}}
+@keyframes up{from{opacity:0;transform:translateY(8px)}}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.85)}}
+@keyframes slide{from{opacity:0;transform:translateX(-24px)}}
+@keyframes fade{from{opacity:0}}
+@keyframes pulse{50%{opacity:.35}}
+.lockc{position:relative;margin-top:16px;padding:20px 18px 18px;border-radius:20px;background:linear-gradient(160deg,#16130a,#0d0e11 60%);border:1px solid var(--edge-gold);overflow:hidden;animation:up .7s var(--ease) .3s both}
+.lk-top{display:flex;align-items:center;gap:16px}
+.pad{flex:none;width:58px;height:64px}
+.pad .sh-l{animation:shut .5s cubic-bezier(.5,0,.3,1.4) 1.7s both}
+.pad .kh{animation:fade .3s 2s both}
+.amt small{display:block;font:500 11px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.18em;color:var(--gold)}
+.amt b{display:block;margin-top:8px;font:700 40px/1 var(--hf);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.amt b em{font-style:normal;font-size:18px;color:var(--gold-hi);margin-left:6px;letter-spacing:0}
+.amt>span{display:block;margin-top:6px;color:var(--dim);font-size:12px}
+.tlh{display:flex;justify-content:space-between;margin-top:20px;font:600 12px/1 var(--hf);color:var(--muted)}
+.tlh span:last-child{color:var(--dim);font-weight:500}
+.ticks{position:relative;display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin-top:12px}
+.ticks::before{content:"";position:absolute;left:4%;right:4%;top:7px;height:2px;background:#23252c}
+.tk{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font:500 9px/1 var(--bf);color:var(--dim);animation:pop .35s var(--ease) both}
+.tk::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid var(--gold);background:#0d0e11;box-sizing:border-box}
+.tk.paid::before{background:var(--grad);border-color:#ffd24d;box-shadow:0 0 10px rgba(245,184,0,.7)}
+.tk.paid{color:var(--gold-hi)}
+.tk.paid::before{animation:glow 2.4s ease-in-out 3.4s infinite}
+.tk:nth-child(1){animation-delay:2.0s}.tk:nth-child(2){animation-delay:2.06s}.tk:nth-child(3){animation-delay:2.12s}.tk:nth-child(4){animation-delay:2.18s}.tk:nth-child(5){animation-delay:2.24s}.tk:nth-child(6){animation-delay:2.3s}.tk:nth-child(7){animation-delay:2.36s}.tk:nth-child(8){animation-delay:2.42s}.tk:nth-child(9){animation-delay:2.48s}.tk:nth-child(10){animation-delay:2.54s}.tk:nth-child(11){animation-delay:2.6s}.tk:nth-child(12){animation-delay:2.66s}
+.pays{position:absolute;right:14px;top:14px;padding:7px 11px;border-radius:999px;background:var(--grad);color:#000;font:700 12px/1 var(--hf);box-shadow:0 8px 24px -8px rgba(245,184,0,.7);animation:pop .45s var(--ease) 2.9s both}
+.vrow{display:flex;justify-content:space-between;gap:12px;padding:11px 2px 0;margin-top:14px;border-top:1px solid #1a1b20;font-size:13px;color:var(--muted)}
+.vrow span:last-child{color:var(--ink);text-align:right}
+.vrow{animation:fade .5s 3s both}
+@keyframes glow{50%{box-shadow:0 0 1px rgba(245,184,0,.2)}}
+@keyframes shut{from{transform:translateY(-12px)}}
+@media (max-width:420px){.dev{padding:20px 14px 16px}.lockc{padding:18px 14px 16px}.amt b{font-size:34px}.pad{width:50px;height:56px}.ticks{gap:2px}.tk{font-size:8px}.pays{right:10px;top:10px;font-size:11px}}
+@media (prefers-reduced-motion:reduce){.stage *{animation:none!important}}
 </style>
 </head>
 <body>
@@ -184,14 +227,21 @@ footer{border-top:1px solid #121317;padding:40px 0 56px;color:var(--dim);font-si
     <p class="hint">BSV locks already work in bWalletX. The storage plans below are <span class="ink">coming</span>. The drive itself is <a href="https://bdrivex.com">bDriveX</a>.</p>
   </div>
 
-  <div class="slip" role="img" aria-label="An example storage plan: 12 months of storage, paid one month at a time from a BSV lock, with unspent BSV recoverable from your 12 words.">
-    <div class="slip-h"><span>Storage plan</span><span class="example">Example</span></div>
-    <div class="slip-who"><div class="av">b</div><div><b>Family photos</b><small>Kept on bDriveX · 12 months</small></div></div>
-    <div class="ln"><span>Paid</span><span>Month by month, signed now</span></div>
-    <div class="ln"><span>Each payment</span><span>Opens only in its month</span></div>
-    <div class="ln"><span>Unspent BSV</span><span>Yours, from your 12 words</span></div>
-    <div class="ln tot"><span>Covered until</span><span>Oct 2027</span></div>
-    <div class="seal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffd24d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>No server needed to get your BSV back.</span></div>
+  <div class="stage" role="img" aria-label="An example storage plan: 0.12 BSV locked with your own keys, a padlock closes, and twelve monthly payments from November 2026 to October 2027 are signed ahead, one opening each month. The vault pays for itself.">
+    <div class="dev">
+      <div class="sh"><span>Storage plan · Family photos</span><span class="example">Example</span></div>
+      <div class="lockc">
+        <span class="pays">Pays for itself</span>
+        <div class="lk-top">
+          <svg class="pad" viewBox="0 0 58 64" aria-hidden="true"><defs><linearGradient id="vg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe58a"/><stop offset=".55" stop-color="#ffd24d"/><stop offset="1" stop-color="#c98f00"/></linearGradient></defs><path class="sh-l" d="M15 30V19a14 14 0 0 1 28 0v11" fill="none" stroke="url(#vg)" stroke-width="6" stroke-linecap="round"/><rect x="5" y="28" width="48" height="34" rx="8" fill="url(#vg)"/><g class="kh"><circle cx="29" cy="42" r="4.5" fill="#0d0e11"/><rect x="27" y="44" width="4" height="9" rx="2" fill="#0d0e11"/></g></svg>
+          <div class="amt"><small>LOCKED</small><b><span data-to="0.12" data-dp="2" data-delay="800" data-dur="1100">0.12</span><em>BSV</em></b><span>Your keys · back from your 12 words</span></div>
+        </div>
+        <div class="tlh"><span>12 payments, signed now</span><span>one opens each month</span></div>
+        <div class="ticks"><span class="tk paid">N</span><span class="tk">D</span><span class="tk">J</span><span class="tk">F</span><span class="tk">M</span><span class="tk">A</span><span class="tk">M</span><span class="tk">J</span><span class="tk">J</span><span class="tk">A</span><span class="tk">S</span><span class="tk">O</span></div>
+        <div class="vrow"><span>Covered until</span><span>Oct 2027</span></div>
+      </div>
+      <div class="chips"><span class="chip">Prepaid · time-locked</span><span class="chip">No server to get it back</span></div>
+    </div>
   </div>
 </div>
 
@@ -273,5 +323,13 @@ footer{border-top:1px solid #121317;padding:40px 0 56px;color:var(--dim);font-si
     <span>By The Bitcoin Corporation Ltd.</span>
   </div>
 </footer>
+<script>
+(function(){var st=document.querySelector('.stage');if(!st||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var cs=st.querySelectorAll('[data-to]');cs.forEach(function(el){el.textContent=(0).toFixed(+el.dataset.dp||0)});st.classList.add('wait');
+function go(){st.classList.remove('wait');cs.forEach(function(el){var to=+el.dataset.to,dp=+el.dataset.dp||0,d=+el.dataset.dur||1300,s=null;
+setTimeout(function(){requestAnimationFrame(function f(t){s=s||t;var k=Math.min(1,(t-s)/d);k=1-Math.pow(1-k,3);el.textContent=(to*k).toLocaleString('en-GB',{minimumFractionDigits:dp,maximumFractionDigits:dp});if(k<1)requestAnimationFrame(f)})},+el.dataset.delay||900)})}
+if(!('IntersectionObserver' in window))return go();
+var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();go()}},{threshold:.4});io.observe(st)})();
+</script>
 </body>
 </html>
